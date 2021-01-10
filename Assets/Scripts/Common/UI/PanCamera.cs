@@ -17,6 +17,8 @@ namespace Common.UI {
 			set => cam.orthographicSize = value;
 		}
 
+		public float BaseSize { get; private set; }
+
 		public static bool CamEnabled { get; set; } = true;
 
 		private Camera cam;
@@ -25,12 +27,13 @@ namespace Common.UI {
 
 		private Vector3 lastMousePosition;
 
-		private void Start() {
+		private void Awake() {
 			cam = GetComponent<Camera>();
 			rb = GetComponent<Rigidbody2D>();
 			frustrumCollider = GetComponent<BoxCollider2D>();
 
 			lastMousePosition = Vector3.zero;
+			BaseSize = Size;
 		}
 
 		private void Update() {

@@ -1043,7 +1043,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 823
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1625,13 +1625,14 @@ GameObject:
   m_Component:
   - component: {fileID: 769004825}
   - component: {fileID: 769004826}
-  m_Layer: 8
+  - component: {fileID: 769004827}
+  m_Layer: 10
   m_Name: Cam Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &769004825
 Transform:
   m_ObjectHideFlags: 0
@@ -1690,12 +1691,26 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5.495, y: 3.16}
+  m_Size: {x: 5.33, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &769004827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769004824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07517408ac99bca4eb707eeee86d5dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panCam: {fileID: 575156837}
+  visualSprite: {fileID: 769004826}
 --- !u!1 &821590513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &821590514
 Camera:
   m_ObjectHideFlags: 0
@@ -1737,7 +1752,7 @@ Camera:
     width: 0.2
     height: 0.2
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 1002
   field of view: 120.087776
   orthographic: 1
   orthographic size: 1771.1488
