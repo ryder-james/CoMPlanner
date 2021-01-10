@@ -87,6 +87,11 @@ public class DataManager : MonoBehaviour {
         PanCamera.CamEnabled = true;
 
         if (FileBrowser.Success) {
+            foreach (StickyNote note in GetNoteList()) {
+                Destroy(note.gameObject);
+            }
+            noteCreator.NoteCount = 0;
+
             string path = FileBrowser.Result[0];
             int indexOfLastSeparator = path.LastIndexOf(Path.DirectorySeparatorChar) + 1;
             PlayerPrefs.SetString("PrevPath", path.Substring(0, indexOfLastSeparator));
