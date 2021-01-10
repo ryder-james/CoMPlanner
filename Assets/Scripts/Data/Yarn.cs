@@ -31,8 +31,7 @@ namespace CasePlanner.Data.Notes {
 			}
 		}
 
-		[SerializeField]
-		private GameObject lineColliderBase = null;
+		[SerializeField] private GameObject lineColliderBase = null;
 
 		public StickyNote A { get => a; set => a = value; }
 		public StickyNote B { get => b; set => b = value; }

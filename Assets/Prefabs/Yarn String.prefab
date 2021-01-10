@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4038897028284559844}
   - component: {fileID: 8957165809570223390}
   - component: {fileID: 5268606001157471410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Yarn String
   m_TagString: Yarn
   m_Icon: {fileID: 0}
