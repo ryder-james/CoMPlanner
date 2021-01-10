@@ -14,6 +14,10 @@ public class DataManager : MonoBehaviour {
     [SerializeField] private PinConnector pinConnector = null;
     [SerializeField] private GameObject settingsMenu = null;
 
+    public List<StickyNote> Notes {
+        get => GetNoteList();
+	}
+
     private string currentCaseName = null;
     private bool settingsOpen = false;
 
@@ -40,7 +44,7 @@ public class DataManager : MonoBehaviour {
         } 
     }
 
-    public List<StickyNote> GetNoteList() {
+    private List<StickyNote> GetNoteList() {
         return GameObject.FindGameObjectsWithTag("Note").Select(o => o.GetComponent<StickyNote>()).OrderBy(n => n.ID).ToList();
     }
 
@@ -87,10 +91,10 @@ public class DataManager : MonoBehaviour {
         PanCamera.CamEnabled = true;
 
         if (FileBrowser.Success) {
-            foreach (StickyNote note in GetNoteList()) {
-                Destroy(note.gameObject);
+            foreach (StickyNote note in Notes) {
+                DestroyImmediate(note.gameObject);
             }
-            noteCreator.NoteCount = 0;
+            noteCreator.NextNoteID = 0;
 
             string path = FileBrowser.Result[0];
             int indexOfLastSeparator = path.LastIndexOf(Path.DirectorySeparatorChar) + 1;
@@ -101,7 +105,7 @@ public class DataManager : MonoBehaviour {
 	}
 
     private StickyNote GetFromID(int id) {
-        return GetNoteList().Where(n => n.ID == id).FirstOrDefault();
+        return Notes.Where(n => n.ID == id).FirstOrDefault();
     }
 
     private void ToggleSettings() {

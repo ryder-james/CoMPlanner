@@ -4,6 +4,7 @@ using CasePlanner.Data.Notes;
 namespace CasePlanner.UI {
 	public class PinConnector : MonoBehaviour {
 		[SerializeField] private GameObject stringBase = null;
+		[SerializeField] private RectTransform stringParent = null;
 
 		public Pin A { get; set; }
 		public Pin B { get; set; }
@@ -17,17 +18,18 @@ namespace CasePlanner.UI {
 					return;
 				}
 				if (yarn == null) {
-					yarn = Instantiate(stringBase, transform.parent).GetComponent<Yarn>();
+					yarn = Instantiate(stringBase, stringParent).GetComponent<Yarn>();
 				}
 
 				yarn.PointA = A.transform;
 				yarn.EndOverride = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				yarn.gameObject.name = $"{A.Note.ID}:";
 			}
 		}
 
 		public void Connect() {
 			if (yarn == null) {
-				yarn = Instantiate(stringBase, transform.parent).GetComponent<Yarn>();
+				yarn = Instantiate(stringBase, stringParent).GetComponent<Yarn>();
 			}
 
 			yarn.PointA = A.transform;
@@ -38,6 +40,8 @@ namespace CasePlanner.UI {
 			yarn.B = B.Note;
 			A.Note.Connect(yarn);
 			B.Note.Connect(yarn);
+
+			yarn.gameObject.name = $"{A.Note.ID}:{B.Note.ID}";
 
 			A = null;
 			B = null;

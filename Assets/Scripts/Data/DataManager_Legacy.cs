@@ -108,7 +108,7 @@ namespace CasePlanner.Data {
                 foreach (StickyNote note in GetNoteList()) {
                     Destroy(note.gameObject);
                 }
-                noteCreator.NoteCount = 0;
+                noteCreator.NextNoteID = 0;
                 Serializer_Legacy.Deserialize(this, pathField.text);
             }
 

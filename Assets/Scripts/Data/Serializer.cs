@@ -16,7 +16,7 @@ namespace CasePlanner.Data {
         public static void Serialize(DataManager manager, string casePath) {
 			SerializeBoard board = new SerializeBoard();
 
-			SerializeNotes(manager.GetNoteList(), ref board);
+			SerializeNotes(manager.Notes, ref board);
 
 			string output = JsonUtility.ToJson(board);
 			File.WriteAllText(casePath, output);

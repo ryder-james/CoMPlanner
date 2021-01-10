@@ -29,9 +29,10 @@ namespace CasePlanner.Data.Notes {
 
 		public string Title {
 			get => title;
-			set { 
-				title = value;
-				titleField.text = value;
+			set {
+				title = value.Trim();
+				titleField.text = title;
+				gameObject.name = $"{ID}: {title}";
 			}
 		}
 
@@ -54,6 +55,7 @@ namespace CasePlanner.Data.Notes {
 
 		public void UpdateTitle() {
 			title = titleField.text;
+			gameObject.name = $"{ID}: {title}";
 		}
 
 		public void View() {
