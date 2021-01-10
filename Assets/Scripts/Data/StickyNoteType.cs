@@ -1,4 +1,4 @@
-﻿public enum SceneType {
+﻿public enum StickyNoteType {
 	Location,
 	Triggered,
 	Person,
