@@ -9,12 +9,12 @@ using System.Linq;
 using System.IO;
 using Common.UI;
 
-public class DataManager : MonoBehaviour {
-    [SerializeField] private StickyNoteCreator noteCreator = null;
-    [SerializeField] private PinConnector pinConnector = null;
+public class DataManager_Legacy : MonoBehaviour {
+    [SerializeField] private StickyNoteCreator_Legacy noteCreator = null;
+    [SerializeField] private PinConnector_Legacy pinConnector = null;
     [SerializeField] private GameObject settingsMenu = null;
 
-    public List<StickyNote> Notes {
+    public List<StickyNote_Legacy> Notes {
         get => GetNoteList();
 	}
 
@@ -44,17 +44,17 @@ public class DataManager : MonoBehaviour {
         } 
     }
 
-    private List<StickyNote> GetNoteList() {
-        return GameObject.FindGameObjectsWithTag("Note").Select(o => o.GetComponent<StickyNote>()).OrderBy(n => n.ID).ToList();
+    private List<StickyNote_Legacy> GetNoteList() {
+        return GameObject.FindGameObjectsWithTag("Note").Select(o => o.GetComponent<StickyNote_Legacy>()).OrderBy(n => n.ID).ToList();
     }
 
-    public void CreateDeserializedNote(StickyNote.SerializeNote serializedNote) {
-        StickyNote note = noteCreator.CreateNote();
+    public void CreateDeserializedNote(StickyNote_Legacy.SerializeNote serializedNote) {
+        StickyNote_Legacy note = noteCreator.CreateNote();
         note.Deserialize(serializedNote);
     }
 
-    public void CreateDeserializedEdges(Yarn.Edge[] edges) {
-        foreach (Yarn.Edge edge in edges) {
+    public void CreateDeserializedEdges(Yarn_Legacy.Edge[] edges) {
+        foreach (Yarn_Legacy.Edge edge in edges) {
             if (edge is null || (edge.a == edge.b)) {
                 continue;
             }
@@ -80,7 +80,7 @@ public class DataManager : MonoBehaviour {
             int indexOfLastSeparator = path.LastIndexOf(Path.DirectorySeparatorChar) + 1;
             PlayerPrefs.SetString("PrevPath", path.Substring(0, indexOfLastSeparator));
             currentCaseName = path.Substring(indexOfLastSeparator);
-            Serializer.Serialize(this, path);
+            Serializer_Legacy.Serialize(this, path);
         }
 	}
 
@@ -91,7 +91,7 @@ public class DataManager : MonoBehaviour {
         PanCamera.CamEnabled = true;
 
         if (FileBrowser.Success) {
-            foreach (StickyNote note in Notes) {
+            foreach (StickyNote_Legacy note in Notes) {
                 DestroyImmediate(note.gameObject);
             }
             noteCreator.NextNoteID = 0;
@@ -100,11 +100,11 @@ public class DataManager : MonoBehaviour {
             int indexOfLastSeparator = path.LastIndexOf(Path.DirectorySeparatorChar) + 1;
             PlayerPrefs.SetString("PrevPath", path.Substring(0, indexOfLastSeparator));
             currentCaseName = path.Substring(indexOfLastSeparator);
-            Serializer.Deserialize(this, path);
+            Serializer_Legacy.Deserialize(this, path);
         }
 	}
 
-    private StickyNote GetFromID(int id) {
+    private StickyNote_Legacy GetFromID(int id) {
         return Notes.Where(n => n.ID == id).FirstOrDefault();
     }
 

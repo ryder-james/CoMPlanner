@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ParticleYarnBreaker : MonoBehaviour {
 	private void OnParticleCollision(GameObject other) {
-		Yarn yarn = other.GetComponentInParent<Yarn>();
+		Yarn_Legacy yarn = other.GetComponentInParent<Yarn_Legacy>();
 		if (yarn != null) {
 			yarn.A.Remove(yarn);
 			yarn.B.Remove(yarn);

@@ -2,14 +2,14 @@
 using CasePlanner.Data.Notes;
 
 namespace CasePlanner.UI {
-	public class PinConnector : MonoBehaviour {
+	public class PinConnector_Legacy : MonoBehaviour {
 		[SerializeField] private GameObject stringBase = null;
 		[SerializeField] private RectTransform stringParent = null;
 
-		public Pin A { get; set; }
-		public Pin B { get; set; }
+		public Pin_Legacy A { get; set; }
+		public Pin_Legacy B { get; set; }
 
-		private Yarn yarn;
+		private Yarn_Legacy yarn;
 
 		private void Update() {
 			if (A != null && B == null) {
@@ -18,7 +18,7 @@ namespace CasePlanner.UI {
 					return;
 				}
 				if (yarn == null) {
-					yarn = Instantiate(stringBase, stringParent).GetComponent<Yarn>();
+					yarn = Instantiate(stringBase, stringParent).GetComponent<Yarn_Legacy>();
 				}
 
 				yarn.PointA = A.transform;
@@ -29,7 +29,7 @@ namespace CasePlanner.UI {
 
 		public void Connect() {
 			if (yarn == null) {
-				yarn = Instantiate(stringBase, stringParent).GetComponent<Yarn>();
+				yarn = Instantiate(stringBase, stringParent).GetComponent<Yarn_Legacy>();
 			}
 
 			yarn.PointA = A.transform;

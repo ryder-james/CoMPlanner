@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace CasePlanner.UI {
-	public class ClueCreator : MonoBehaviour {
+	public class ClueCreator_Legacy : MonoBehaviour {
 		[SerializeField]
 		private GameObject clueBase = null;
 
 		[SerializeField]
-		private StickyNoteViewer viewer = null;
+		private StickyNoteViewer_Legacy viewer = null;
 
 		public void CreateClue(string text = "") {
 			GameObject go = Instantiate(clueBase, transform);
-			Clue c = go.GetComponent<Clue>();
+			Clue_Legacy c = go.GetComponent<Clue_Legacy>();
 			c.Viewer = viewer;
 			c.Text = text;
 		}

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace CasePlanner.Data {
-	public class Clue : MonoBehaviour {
+	public class Clue_Legacy : MonoBehaviour {
 		[SerializeField]
 		private TMP_InputField textField = null;
 
@@ -20,7 +20,7 @@ namespace CasePlanner.Data {
 			}
 		}
 
-		public StickyNoteViewer Viewer { get; set; }
+		public StickyNoteViewer_Legacy Viewer { get; set; }
 
 		public void UpdateViewer() {
 			if (Viewer.UpdateClue(text, textField.text)) {
@@ -34,7 +34,7 @@ namespace CasePlanner.Data {
 		}
 
 		public override bool Equals(object obj) {
-			return obj is Clue clue &&
+			return obj is Clue_Legacy clue &&
 				   base.Equals(obj) &&
 				   Text == clue.Text;
 		}

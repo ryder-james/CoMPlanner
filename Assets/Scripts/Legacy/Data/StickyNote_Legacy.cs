@@ -6,7 +6,7 @@ using Common.UI;
 using System.Linq;
 
 namespace CasePlanner.Data.Notes {
-	public class StickyNote : MonoBehaviour, ISerializable<StickyNote.SerializeNote> {
+	public class StickyNote_Legacy : MonoBehaviour, ISerializable<StickyNote_Legacy.SerializeNote> {
 		[System.Serializable]
 		public struct SerializeNote {
 			public int id;
@@ -19,7 +19,7 @@ namespace CasePlanner.Data.Notes {
 		private TMP_InputField titleField = null;
 
 		[SerializeField]
-		private Pin pin = null;
+		private Pin_Legacy pin = null;
 
 		private string title = "";
 		private Vector3 mouseDownPos;
@@ -41,15 +41,15 @@ namespace CasePlanner.Data.Notes {
 		public string Description { get; set; } = "";
 		public List<string> Clues { get; set; } = new List<string>();
 
-		public List<Yarn> Edges { get; } = new List<Yarn>();
+		public List<Yarn_Legacy> Edges { get; } = new List<Yarn_Legacy>();
 
-		public Pin Pin { get => pin; set => pin = value; }
+		public Pin_Legacy Pin { get => pin; set => pin = value; }
 
-		public void Connect(Yarn yarn) {
+		public void Connect(Yarn_Legacy yarn) {
 			Edges.Add(yarn);
 		}
 
-		public void Remove(Yarn yarn) {
+		public void Remove(Yarn_Legacy yarn) {
 			Edges.Remove(yarn);
 		}
 
@@ -59,7 +59,7 @@ namespace CasePlanner.Data.Notes {
 		}
 
 		public void View() {
-			Viewer.GetComponent<StickyNoteViewer>().Note = this;
+			Viewer.GetComponent<StickyNoteViewer_Legacy>().Note = this;
 			Viewer.SetActive(true);
 		}
 
@@ -75,7 +75,7 @@ namespace CasePlanner.Data.Notes {
 		}
 
 		private void OnDestroy() {
-			foreach (Yarn yarn in Edges) {
+			foreach (Yarn_Legacy yarn in Edges) {
 				if (yarn.A == this) {
 					yarn.B.Remove(yarn);
 				} else {

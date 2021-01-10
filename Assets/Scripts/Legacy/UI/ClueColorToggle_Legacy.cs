@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClueColorToggle : MonoBehaviour {
+public class ClueColorToggle_Legacy : MonoBehaviour {
 	[SerializeField] private Image buttonImage = null;
 	[SerializeField] private Image clueImage = null;
 	[SerializeField] private Color defaultColor = Color.white;

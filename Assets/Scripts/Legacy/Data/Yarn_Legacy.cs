@@ -2,7 +2,7 @@
 
 namespace CasePlanner.Data.Notes {
 	[System.Serializable]
-	public class Yarn : MonoBehaviour, ISerializable<Yarn.Edge> {
+	public class Yarn_Legacy : MonoBehaviour, ISerializable<Yarn_Legacy.Edge> {
 		[System.Serializable]
 		public class Edge {
 			public int a, b;
@@ -33,8 +33,8 @@ namespace CasePlanner.Data.Notes {
 
 		[SerializeField] private GameObject lineColliderBase = null;
 
-		public StickyNote A { get => a; set => a = value; }
-		public StickyNote B { get => b; set => b = value; }
+		public StickyNote_Legacy A { get => a; set => a = value; }
+		public StickyNote_Legacy B { get => b; set => b = value; }
 		public Transform PointA { get => pointA; set => pointA = value; }
 		public Transform PointB { get => pointB; set => pointB = value; }
 		public Vector3 EndOverride { get; set; }
@@ -43,7 +43,7 @@ namespace CasePlanner.Data.Notes {
 		private LineRenderer line;
 
 		[SerializeField, HideInInspector]
-		private StickyNote a, b;
+		private StickyNote_Legacy a, b;
 
 		[SerializeField, HideInInspector]
 		private Transform pointA, pointB;

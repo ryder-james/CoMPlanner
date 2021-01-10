@@ -4,21 +4,21 @@ using Common.UI;
 using CasePlanner.Data.Notes;
 
 namespace CasePlanner.UI {
-	public class Pin : MonoBehaviour {
+	public class Pin_Legacy : MonoBehaviour {
 		[SerializeField] private Color[] colors = null;
 
 		private int colorIndex = 0;
 		private Image img;
-		private PinConnector connector;
-		private StickyNote note;
+		private PinConnector_Legacy connector;
+		private StickyNote_Legacy note;
 		private DraggableUI draggable;
 
-		public StickyNote Note { get => note; set => note = value; }
+		public StickyNote_Legacy Note { get => note; set => note = value; }
 
 		private void Start() {
 			img = GetComponent<Image>();
-			connector = GameObject.FindGameObjectWithTag("Connector").GetComponent<PinConnector>();
-			Note = GetComponentInParent<StickyNote>();
+			connector = GameObject.FindGameObjectWithTag("Connector").GetComponent<PinConnector_Legacy>();
+			Note = GetComponentInParent<StickyNote_Legacy>();
 			draggable = GetComponentInParent<DraggableUI>();
 		}
 

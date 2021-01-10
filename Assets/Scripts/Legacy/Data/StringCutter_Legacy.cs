@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace CasePlanner.Data {
 	[RequireComponent(typeof(Rigidbody2D))]
-	public class StringCutter : MonoBehaviour {
+	public class StringCutter_Legacy : MonoBehaviour {
 		[SerializeField] private ParticleSystem cutterParticles = null;
 
 		private bool isCutting = false;

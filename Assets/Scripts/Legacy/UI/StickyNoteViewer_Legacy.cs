@@ -6,9 +6,9 @@ using Common.UI;
 using CasePlanner.Data;
 
 namespace CasePlanner.UI {
-	public class StickyNoteViewer : MonoBehaviour {
+	public class StickyNoteViewer_Legacy : MonoBehaviour {
 		[SerializeField]
-		private ClueCreator clueCreator = null;
+		private ClueCreator_Legacy clueCreator = null;
 
 		[SerializeField]
 		private TMP_InputField titleField = null;
@@ -28,7 +28,7 @@ namespace CasePlanner.UI {
 		[SerializeField]
 		private GameObject cancelButton = null;
 
-		public StickyNote Note { get; set; }
+		public StickyNote_Legacy Note { get; set; }
 
 		private PanCamera panCam;
 		private PanCamera PanCam {

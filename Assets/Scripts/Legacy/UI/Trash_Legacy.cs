@@ -5,7 +5,7 @@ using Common.UI;
 using UnityEngine.EventSystems;
 
 namespace CasePlanner.UI {
-	public class Trash : MonoBehaviour {
+	public class Trash_Legacy : MonoBehaviour {
 		private Image img;
 		private bool trashEnabled = false;
 
