@@ -1,4 +1,4 @@
-﻿public enum StickyNoteType {
+﻿public enum NoteType {
 	Location,
 	Triggered,
 	Person,

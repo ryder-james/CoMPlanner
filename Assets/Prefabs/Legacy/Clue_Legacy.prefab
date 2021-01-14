@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 3837204871986003676}
   - component: {fileID: 2509445057408250521}
   - component: {fileID: 6392717426174120501}
+  - component: {fileID: 9113582077239726733}
   m_Layer: 5
   m_Name: Color Toggle
   m_TagString: Untagged
@@ -275,7 +276,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1131264569178895251}
+      - m_Target: {fileID: 9113582077239726733}
         m_MethodName: ToggleColor
         m_Mode: 1
         m_Arguments:
@@ -286,6 +287,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9113582077239726733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759143003249980022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7067ea10e83b75a46a49e4a3a38af78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 2509445057408250521}
+  clueImage: {fileID: 2416644469287806736}
+  defaultColor: {r: 0.99215686, g: 0.94509804, b: 0.6431373, a: 1}
+  secondaryColor: {r: 0.81960785, g: 0.5294118, b: 0.5294118, a: 1}
 --- !u!1 &1797542244067824046
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +651,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5825274289676811035}
-  - component: {fileID: 1131264569178895251}
   - component: {fileID: 1994784350616953344}
   - component: {fileID: 2416644469287806736}
   - component: {fileID: 2892413567581341174}
@@ -669,23 +685,6 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 21}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1131264569178895251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7745087345001732747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acae0e3ac09400b43ad75f4782c04c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textField: {fileID: 2892413567581341174}
-  primaryColor: {r: 0.99215686, g: 0.94509804, b: 0.6431373, a: 1}
-  secondaryColor: {r: 0.819, g: 0.529, b: 0.529, a: 1}
-  backgroundImage: {fileID: 2416644469287806736}
-  colorToggleButtonImage: {fileID: 2509445057408250521}
 --- !u!222 &1994784350616953344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -801,9 +800,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1131264569178895251}
-        m_MethodName: set_Text
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_MethodName: UpdateViewer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

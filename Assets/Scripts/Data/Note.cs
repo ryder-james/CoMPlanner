@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 
-public class StickyNote {
+public class Note {
+	public delegate void ValueChanged<T>(T oldValue, T newValue);
+
 	public readonly int ID;
 
 	private string title;
@@ -9,7 +11,8 @@ public class StickyNote {
 	public string Title {
 		get => title;
 		set {
-			title = value.Trim();
+			OnTitleChanged?.Invoke(title, value);
+			title = value;
 			if (title.Length > 32) {
 				title = title.Substring(0, 32);
 			}
@@ -17,13 +20,14 @@ public class StickyNote {
 	}
 
 	public int[] Connections => connections.ToArray();
-	public StickyNoteType Type { get; set; }
+	public NoteType Type { get; set; }
+	public ValueChanged<string> OnTitleChanged { get; set; }
 
-	protected StickyNote(int id) {
+	protected Note(int id) {
 		ID = id;
 
 		title = "";
 		connections = new List<int>();
-		Type = StickyNoteType.Location;
+		Type = NoteType.Location;
 	}
 }

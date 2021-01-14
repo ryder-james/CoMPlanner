@@ -19,7 +19,7 @@ TagManager:
   - 
   - 
   - Camera
-  - Yarn
+  - Note
   - Hidden on Main
   - 
   - 
@@ -45,4 +45,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4065267797
+    locked: 0
+  - name: NoteShadow
+    uniqueID: 264680143
+    locked: 0
+  - name: Notes
+    uniqueID: 1607089839
+    locked: 0
+  - name: String
+    uniqueID: 3059133617
+    locked: 0
+  - name: Pins
+    uniqueID: 3952804553
+    locked: 0
+  - name: UI
+    uniqueID: 3957222123
     locked: 0

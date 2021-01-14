@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4038897028284559844}
   - component: {fileID: 8957165809570223390}
-  - component: {fileID: 5268606001157471410}
+  - component: {fileID: 4314863875323635959}
   m_Layer: 8
-  m_Name: Yarn String
+  m_Name: YarnString_Legacy
   m_TagString: Yarn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!114 &5268606001157471410
+--- !u!114 &4314863875323635959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3399545951505287725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c8c9433e8877d4498a4865b4a09d01e, type: 3}
+  m_Script: {fileID: 11500000, guid: 86251440c3fcf1540a4dfc7b38d81cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lineColliderBase: {fileID: 4117052385082397164, guid: d2ed1ee5e4a7b934cb6a01215d99235d,
