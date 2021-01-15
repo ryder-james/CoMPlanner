@@ -12,7 +12,8 @@ public class Edge {
 
 	public override bool Equals(object obj) {
 		if (obj is Edge) {
-			return a == (obj as Edge).a && b == (obj as Edge).b;
+			return (a == (obj as Edge).a && b == (obj as Edge).b)
+				|| (a == (obj as Edge).b && b == (obj as Edge).a);
 		} else {
 			return false;
 		}
