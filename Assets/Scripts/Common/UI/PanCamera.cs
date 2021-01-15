@@ -19,7 +19,7 @@ namespace Common.UI {
 
 		public float BaseSize { get; private set; }
 
-		public static bool CamEnabled { get; set; } = true;
+		public bool CamEnabled { get; set; } = true;
 
 		private Camera cam;
 		private Rigidbody2D rb;

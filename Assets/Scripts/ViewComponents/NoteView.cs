@@ -30,11 +30,12 @@ public class NoteView : MonoBehaviour {
 	public SceneDetailView DetailView { get; set; }
 
 	private void Start() {
-		if (IsScene) {
-			Note = new Scene();
-		} else {
-			Note = new Case();
-		}
+		titleField.text = note.Title;
+	}
+
+	private void Update() {
+		note.X = transform.position.x;
+		note.Y = transform.position.y;
 	}
 
 	public void UpdateTitle(string oldTitle, string newTitle) {

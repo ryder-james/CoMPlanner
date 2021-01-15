@@ -13,6 +13,7 @@ public class SceneDetailView : MonoBehaviour {
 	[SerializeField] private GameObject editButton = null;
 	[SerializeField] private GameObject saveButton = null;
 	[SerializeField] private GameObject cancelButton = null;
+	[SerializeField] private PanCamera panCam = null;
 
 	private Scene scene;
 
@@ -91,11 +92,11 @@ public class SceneDetailView : MonoBehaviour {
 	}
 
 	private void OnEnable() {
-		PanCamera.CamEnabled = false;
+		panCam.CamEnabled = false;
 		UpdateDetails();
 	}
 
 	private void OnDisable() {
-		PanCamera.CamEnabled = true;
+		panCam.CamEnabled = true;
 	}
 }

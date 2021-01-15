@@ -71,9 +71,9 @@ public class DataManager_Legacy : MonoBehaviour {
 
     private IEnumerator ShowSaveDialogAsync() {
         string prevPath = PlayerPrefs.GetString("PrevPath", null);
-        PanCamera.CamEnabled = false;
+        //PanCamera.CamEnabled = false;
         yield return FileBrowser.WaitForSaveDialog(FileBrowser.PickMode.Files, false, prevPath, currentCaseName);
-        PanCamera.CamEnabled = true;
+        //PanCamera.CamEnabled = true;
 
         if (FileBrowser.Success) {
             string path = FileBrowser.Result[0];
@@ -86,9 +86,9 @@ public class DataManager_Legacy : MonoBehaviour {
 
     private IEnumerator ShowLoadDialogAsync() {
         string prevPath = PlayerPrefs.GetString("PrevPath", null);
-        PanCamera.CamEnabled = false;
+        //PanCamera.CamEnabled = false;
         yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, prevPath, currentCaseName);
-        PanCamera.CamEnabled = true;
+        //PanCamera.CamEnabled = true;
 
         if (FileBrowser.Success) {
             foreach (StickyNote_Legacy note in Notes) {
@@ -109,7 +109,7 @@ public class DataManager_Legacy : MonoBehaviour {
     }
 
     private void ToggleSettings() {
-        PanCamera.CamEnabled = settingsOpen;
+        //PanCamera.CamEnabled = settingsOpen;
         settingsOpen = !settingsOpen;
         settingsMenu.SetActive(settingsOpen);
     }

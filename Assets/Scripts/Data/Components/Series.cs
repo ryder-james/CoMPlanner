@@ -19,8 +19,20 @@ public class Series : ISerializable<Series.SerializedSeries> {
 	public Case[] Cases => cases.ToArray();
 
 	public Series() {
-		title = "";
+		title = "Series";
 		cases = new List<Case>();
+	}
+
+	public void AddCase(Case caze) {
+		cases.Add(caze);
+	}
+
+	public void RemoveCase(Case caze) {
+		foreach (int id in caze.Connections) {
+			GetCaseByID(id).Disconnect(caze.ID);
+		}
+
+		cases.Remove(caze);
 	}
 
 	public SerializedSeries Serialized() {
@@ -50,6 +62,7 @@ public class Series : ISerializable<Series.SerializedSeries> {
 	public void Deserialize(SerializedSeries obj) {
 		Title = obj.title;
 
+		cases.Clear();
 		foreach(var sCase in obj.cases) {
 			Case c = new Case();
 			c.Deserialize(sCase);

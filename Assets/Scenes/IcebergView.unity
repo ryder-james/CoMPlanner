@@ -352,6 +352,51 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &458233654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458233655}
+  - component: {fileID: 458233656}
+  m_Layer: 0
+  m_Name: Data Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &458233655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458233654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1577888666}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &458233656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458233654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23378e65a92c60343ba859f7473c524e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteManager: {fileID: 1562021553}
+  panCam: {fileID: 575156837}
 --- !u!1 &481213961
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,10 +480,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485475275}
-  - component: {fileID: 485475278}
   - component: {fileID: 485475277}
   - component: {fileID: 485475276}
-  - component: {fileID: 485475280}
   m_Layer: 5
   m_Name: Corkboard
   m_TagString: Untagged
@@ -502,64 +545,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485475274}
   m_CullTransparentMesh: 0
---- !u!114 &485475278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485475274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a39bd9bab975a444bcc4c8aa2ef9859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noteCreator: {fileID: 0}
-  pinConnector: {fileID: 0}
-  settingsMenu: {fileID: 1000221148}
---- !u!114 &485475280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485475274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2038394908}
-          m_MethodName: StartBreak
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2038394908}
-          m_MethodName: StopBreak
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &488938595
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +678,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 485475278}
+      - m_Target: {fileID: 0}
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -720,7 +705,7 @@ MonoBehaviour:
   buttonEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 485475278}
+      - m_Target: {fileID: 0}
         m_MethodName: ShowPathPanel
         m_Mode: 6
         m_Arguments:
@@ -8121,7 +8106,7 @@ GameObject:
   - component: {fileID: 1562021552}
   - component: {fileID: 1562021553}
   m_Layer: 0
-  m_Name: Note Creator
+  m_Name: Note Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8189,6 +8174,7 @@ Transform:
   - {fileID: 1224674688}
   - {fileID: 1562021552}
   - {fileID: 720007790}
+  - {fileID: 458233655}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8400,9 +8386,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1752331588}
+  - component: {fileID: 1752331589}
   - component: {fileID: 1752331592}
   - component: {fileID: 1752331591}
-  - component: {fileID: 1752331589}
   - component: {fileID: 1752331590}
   m_Layer: 5
   m_Name: Trash
@@ -8439,9 +8425,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752331587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f47e5100284564087447f4185f9fdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dcc724142582394e8d145f9a8a18494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  img: {fileID: 1752331591}
+  noteManager: {fileID: 1562021553}
 --- !u!114 &1752331590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9010,6 +8998,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1169740926}
     m_Modifications:
     - target: {fileID: 80042158, guid: bee67c0f4a0791f4b9b88b9d218338b9, type: 3}
+      propertyPath: panCam
+      value: 
+      objectReference: {fileID: 575156837}
+    - target: {fileID: 80042158, guid: bee67c0f4a0791f4b9b88b9d218338b9, type: 3}
       propertyPath: clueCreator
       value: 
       objectReference: {fileID: 720007791}
@@ -9213,7 +9205,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1959846892989535589, guid: bee67c0f4a0791f4b9b88b9d218338b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bee67c0f4a0791f4b9b88b9d218338b9, type: 3}
 --- !u!1 &2106242211
 GameObject:

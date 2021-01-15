@@ -42,4 +42,8 @@ public abstract class Note {
 			return true;
 		}
 	}
+
+	public void Disconnect(int otherID) {
+		connections.Remove(otherID);
+	}
 }

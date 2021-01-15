@@ -10,7 +10,21 @@ public class Case : Note, ISerializable<Case.SerializedCase> {
 	public Scene[] Scenes => scenes.ToArray();
 
 	public Case() : base(nextID++) {
+		Title = "Case";
+
 		scenes = new List<Scene>();
+	}
+
+	public void AddScene(Scene scene) {
+		scenes.Add(scene);
+	}
+
+	public void RemoveScene(Scene scene) {
+		foreach (int id in scene.Connections) {
+			GetSceneByID(id).Disconnect(scene.ID);
+		}
+
+		scenes.Remove(scene);
 	}
 
 	public SerializedCase Serialized() {
@@ -46,6 +60,7 @@ public class Case : Note, ISerializable<Case.SerializedCase> {
 		X = obj.x;
 		Y = obj.y;
 
+		scenes.Clear();
 		foreach (var scene in obj.scenes) {
 			Scene s = new Scene();
 			s.Deserialize(scene);
