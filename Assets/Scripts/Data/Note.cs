@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using CasePlanner.Data;
+using System.Collections.Generic;
 
-public class Note {
-	public delegate void ValueChanged<T>(T oldValue, T newValue);
+public abstract class Note {
+	public delegate void ValueChanged<ValueType>(ValueType oldValue, ValueType newValue);
 
-	public readonly int ID;
+	public int ID { get; protected set; }
 
 	private string title;
 	private readonly List<int> connections;
@@ -22,6 +23,8 @@ public class Note {
 	public int[] Connections => connections.ToArray();
 	public NoteType Type { get; set; }
 	public ValueChanged<string> OnTitleChanged { get; set; }
+	public float X { get; set; }
+	public float Y { get; set; }
 
 	protected Note(int id) {
 		ID = id;
@@ -29,5 +32,14 @@ public class Note {
 		title = "";
 		connections = new List<int>();
 		Type = NoteType.Location;
+	}
+
+	public bool Connect(int otherID) {
+		if (connections.Contains(otherID)) {
+			return false;
+		} else {
+			connections.Add(otherID);
+			return true;
+		}
 	}
 }
