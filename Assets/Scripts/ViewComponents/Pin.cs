@@ -17,7 +17,7 @@ public class Pin : MonoBehaviour {
 		}
 	}
 
-	private void Start() {
+	private void Awake() {
 		PinConnector = FindObjectOfType<PinConnector>();
 		NoteView = GetComponentInParent<NoteView>();
 	}

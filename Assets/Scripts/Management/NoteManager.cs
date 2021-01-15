@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NoteManager : MonoBehaviour {
@@ -8,9 +9,12 @@ public class NoteManager : MonoBehaviour {
 	[SerializeField] private GameObject stickyNoteBase = null;
 	[SerializeField] private bool shouldCreateScenes = true;
 
-	public Series ActiveSeries { get; set; }
-	public int ActiveCaseIndex { get; set; } = 0;
 	private List<NoteView> notes;
+
+	public Series ActiveSeries { get; set; }
+	public Case ActiveCase => ActiveSeries.Cases[ActiveCaseIndex];
+	public int ActiveCaseIndex { get; set; } = 0;
+	public NoteView[] Notes => notes.ToArray();
 
 	private void Start() {
 		notes = new List<NoteView>();
@@ -43,7 +47,7 @@ public class NoteManager : MonoBehaviour {
 		}
 
 		if (shouldCreateScenes) {
-			ActiveSeries.Cases[ActiveCaseIndex].AddScene(view.Note as Scene);
+			ActiveCase.AddScene(view.Note as Scene);
 		} else {
 			ActiveSeries.AddCase(view.Note as Case);
 		}
@@ -59,7 +63,7 @@ public class NoteManager : MonoBehaviour {
 	public void DestroyNote(NoteView view, bool immediate = false) {
 		notes.Remove(view);
 		if (shouldCreateScenes) {
-			ActiveSeries.Cases[ActiveCaseIndex].RemoveScene(view.Note as Scene);
+			ActiveCase.RemoveScene(view.Note as Scene);
 		} else {
 			ActiveSeries.RemoveCase(view.Note as Case);
 		}
@@ -71,16 +75,20 @@ public class NoteManager : MonoBehaviour {
 	}
 
 	public void ClearNotes() {
-		foreach (NoteView view in notes) {
+		foreach (NoteView view in Notes) {
 			DestroyNote(view, true);
 		}
 	}
 
 	public void PopulateNotes() {
 		if (shouldCreateScenes) {
-			foreach (Scene scene in ActiveSeries.Cases[ActiveCaseIndex].Scenes) {
+			foreach (Scene scene in ActiveCase.Scenes) {
 				CreateViewNote(scene);
 			}
 		}
+	}
+
+	public NoteView GetNoteByID(int id) {
+		return notes.Where(n => n.Note.ID == id).FirstOrDefault();
 	}
 }

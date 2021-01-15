@@ -396,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteManager: {fileID: 1562021553}
+  pinConnector: {fileID: 2009464637}
   panCam: {fileID: 575156837}
 --- !u!1 &481213961
 GameObject:

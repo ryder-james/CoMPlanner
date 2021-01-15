@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class NoteView : MonoBehaviour {
 	[SerializeField] private TMP_InputField titleField = null;
+	[SerializeField] private Pin pin = null;
 
 	private Note note;
 	private Vector2 mouseDownPosition;
@@ -28,6 +29,7 @@ public class NoteView : MonoBehaviour {
 	} 
 
 	public SceneDetailView DetailView { get; set; }
+	public Pin Pin { get => pin; set => pin = value; }
 
 	private void Start() {
 		titleField.text = note.Title;

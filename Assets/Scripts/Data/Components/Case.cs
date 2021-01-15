@@ -16,7 +16,9 @@ public class Case : Note, ISerializable<Case.SerializedCase> {
 	}
 
 	public void AddScene(Scene scene) {
-		scenes.Add(scene);
+		if (!scenes.Contains(scene)) {
+			scenes.Add(scene);
+		}
 	}
 
 	public void RemoveScene(Scene scene) {

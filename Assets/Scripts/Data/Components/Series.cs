@@ -24,7 +24,9 @@ public class Series : ISerializable<Series.SerializedSeries> {
 	}
 
 	public void AddCase(Case caze) {
-		cases.Add(caze);
+		if (!cases.Contains(caze)) {
+			cases.Add(caze);
+		}
 	}
 
 	public void RemoveCase(Case caze) {

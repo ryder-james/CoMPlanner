@@ -46,4 +46,13 @@ public abstract class Note {
 	public void Disconnect(int otherID) {
 		connections.Remove(otherID);
 	}
+
+	public override bool Equals(object obj) {
+		return obj is Note note &&
+			   ID == note.ID;
+	}
+
+	public override int GetHashCode() {
+		return 1213502048 + ID.GetHashCode();
+	}
 }

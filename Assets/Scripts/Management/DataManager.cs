@@ -1,4 +1,5 @@
 ﻿using CasePlanner.Data.Management;
+using CasePlanner.UI;
 using Common.UI;
 using SimpleFileBrowser;
 using System.Collections;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour {
 	[SerializeField] private NoteManager noteManager = null;
+    [SerializeField] private PinConnector pinConnector = null;
     [SerializeField] private PanCamera panCam = null;
 
     private string activeSeriesName = null;
@@ -73,6 +75,33 @@ public class DataManager : MonoBehaviour {
             noteManager.ActiveSeries.Deserialize(serializer.Deserialize(path));
 
             noteManager.PopulateNotes();
+            ConnectPins();
         }
+    }
+
+    private void ConnectPins() {
+        List<Edge> edges = new List<Edge>();
+        foreach (NoteView nv in noteManager.Notes) {
+            foreach (int bSide in nv.Note.Connections) {
+                if (nv.Note.ID == bSide) {
+                    continue;
+				}
+
+                Edge e = new Edge {
+                    a = nv.Note.ID,
+                    b = bSide
+                };
+
+                if (!edges.Contains(e)) {
+                    edges.Add(e);
+				}
+            }
+        }
+
+        foreach (Edge edge in edges) {
+            pinConnector.A = noteManager.GetNoteByID(edge.a).Pin;
+            pinConnector.B = noteManager.GetNoteByID(edge.b).Pin;
+            pinConnector.Connect();
+		}
     }
 }
