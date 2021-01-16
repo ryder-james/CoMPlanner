@@ -4,8 +4,9 @@ namespace CasePlanner.Data.Notes {
 	public class EdgeView : MonoBehaviour {
 		[SerializeField] private GameObject lineColliderBase = null;
 
-		public Transform PointA { get; set; }
-		public Transform PointB { get; set; }
+		public NoteView A { get; set; }
+		public NoteView B { get; set; }
+
 		public Vector3 EndOverride { get; set; }
 
 		private LineRenderer line;
@@ -34,16 +35,16 @@ namespace CasePlanner.Data.Notes {
 		}
 
 		private void Update() {
-			Vector3 aPos = PointA.position;
-			Vector3 bPos = EndOverride == Vector3.zero ? PointB.position : EndOverride;
+			Vector3 aPos = A.Pin.transform.position;
+			Vector3 bPos = EndOverride == Vector3.zero ? B.Pin.transform.position : EndOverride;
 			aPos.z = 0;
 			bPos.z = 0;
 			UpdateCollider(aPos, bPos);
 		}
 
 		private void LateUpdate() {
-			Vector3 aPos = PointA.position;
-			Vector3 bPos = EndOverride == Vector3.zero ? PointB.position : EndOverride;
+			Vector3 aPos = A.Pin.transform.position;
+			Vector3 bPos = EndOverride == Vector3.zero ? B.Pin.transform.position : EndOverride;
 			aPos.z = 0;
 			bPos.z = 0;
 			line.SetPositions(new Vector3[] { aPos, bPos });

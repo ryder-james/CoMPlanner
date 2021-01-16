@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleYarnBreaker : MonoBehaviour {
+public class ParticleYarnBreaker_Legacy : MonoBehaviour {
 	private void OnParticleCollision(GameObject other) {
 		Yarn_Legacy yarn = other.GetComponentInParent<Yarn_Legacy>();
 		if (yarn != null) {

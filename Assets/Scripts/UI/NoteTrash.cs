@@ -12,6 +12,10 @@ public class NoteTrash : MonoBehaviour {
 	private bool trashEnabled = false;
 
 	public void Enter(BaseEventData eventData) {
+		if (eventData.selectedObject == null) {
+			return;
+		}
+
 		DraggableUI heldUI = eventData.selectedObject.GetComponent<DraggableUI>();
 		if (heldUI != null && heldUI.IsHeld) {
 			trashEnabled = true;
@@ -20,6 +24,10 @@ public class NoteTrash : MonoBehaviour {
 	}
 
 	public void Drop(BaseEventData eventData) {
+		if (eventData.selectedObject == null) {
+			return;
+		}
+
 		if (trashEnabled && eventData.selectedObject.TryGetComponent(out NoteView view)) {
 			noteManager.DestroyNote(view);
 		}

@@ -9,7 +9,7 @@ namespace CasePlanner.UI {
 		public Pin A { get; set; }
 		public Pin B { get; set; }
 
-		private EdgeView yarn;
+		private EdgeView edgeView;
 
 		private void Update() {
 			if (A != null && B == null) {
@@ -17,38 +17,40 @@ namespace CasePlanner.UI {
 					Cancel();
 					return;
 				}
-				if (yarn == null) {
-					yarn = Instantiate(edgeViewPrefab, stringParent).GetComponent<EdgeView>();
+				if (edgeView == null) {
+					edgeView = Instantiate(edgeViewPrefab, stringParent).GetComponent<EdgeView>();
 				}
 
-				yarn.PointA = A.transform;
-				yarn.EndOverride = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				yarn.gameObject.name = $"{A.NoteView.Note.ID}:";
+				edgeView.A = A.NoteView;
+				edgeView.EndOverride = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				edgeView.gameObject.name = $"{A.NoteView.Note.ID}:";
 			}
 		}
 
 		public void Connect() {
-			if (yarn == null) {
-				yarn = Instantiate(edgeViewPrefab, stringParent).GetComponent<EdgeView>();
+			if (edgeView == null) {
+				edgeView = Instantiate(edgeViewPrefab, stringParent).GetComponent<EdgeView>();
 			}
 
-			yarn.PointA = A.transform;
-			yarn.PointB = B.transform;
-			yarn.EndOverride = Vector3.zero;
+			edgeView.A = A.NoteView;
+			edgeView.B = B.NoteView;
+			edgeView.EndOverride = Vector3.zero;
 
 			A.NoteView.Note.Connect(B.NoteView.Note.ID);
 			B.NoteView.Note.Connect(A.NoteView.Note.ID);
+			A.NoteView.ConnectEdge(ref edgeView);
+			B.NoteView.ConnectEdge(ref edgeView);
 
-			yarn.gameObject.name = $"{A.NoteView.Note.ID}:{B.NoteView.Note.ID}";
+			edgeView.gameObject.name = $"{A.NoteView.Note.ID}:{B.NoteView.Note.ID}";
 
 			A = null;
 			B = null;
-			yarn = null;
+			edgeView = null;
 		}
 
 		public void Cancel() {
-			if (yarn != null) {
-				Destroy(yarn.gameObject);
+			if (edgeView != null) {
+				Destroy(edgeView.gameObject);
 			}
 			A = null;
 			B = null;
