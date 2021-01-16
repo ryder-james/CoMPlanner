@@ -1,58 +1,59 @@
-﻿using CasePlanner.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-public abstract class Note {
-	public delegate void ValueChanged<ValueType>(ValueType oldValue, ValueType newValue);
+namespace CasePlanner.Data.Components {
+	public abstract class Note {
+		public delegate void ValueChanged<ValueType>(ValueType oldValue, ValueType newValue);
 
-	public int ID { get; protected set; }
+		public int ID { get; protected set; }
 
-	private string title;
-	private readonly List<int> connections;
+		private string title;
+		private readonly List<int> connections;
 
-	public string Title {
-		get => title;
-		set {
-			OnTitleChanged?.Invoke(title, value);
-			title = value;
-			if (title.Length > 32) {
-				title = title.Substring(0, 32);
+		public string Title {
+			get => title;
+			set {
+				OnTitleChanged?.Invoke(title, value);
+				title = value;
+				if (title.Length > 32) {
+					title = title.Substring(0, 32);
+				}
 			}
 		}
-	}
 
-	public int[] Connections => connections.ToArray();
-	public NoteType Type { get; set; }
-	public ValueChanged<string> OnTitleChanged { get; set; }
-	public float X { get; set; }
-	public float Y { get; set; }
+		public int[] Connections => connections.ToArray();
+		public NoteType Type { get; set; }
+		public ValueChanged<string> OnTitleChanged { get; set; }
+		public float X { get; set; }
+		public float Y { get; set; }
 
-	protected Note(int id) {
-		ID = id;
+		protected Note(int id) {
+			ID = id;
 
-		title = "";
-		connections = new List<int>();
-		Type = NoteType.Location;
-	}
-
-	public bool Connect(int otherID) {
-		if (connections.Contains(otherID)) {
-			return false;
-		} else {
-			connections.Add(otherID);
-			return true;
+			title = "";
+			connections = new List<int>();
+			Type = NoteType.Location;
 		}
-	}
 
-	public void Disconnect(int otherID) {
-		connections.Remove(otherID);
-	}
+		public bool Connect(int otherID) {
+			if (connections.Contains(otherID)) {
+				return false;
+			} else {
+				connections.Add(otherID);
+				return true;
+			}
+		}
 
-	public override bool Equals(object obj) {
-		return obj is Note note &&
-			   ID == note.ID;
-	}
+		public void Disconnect(int otherID) {
+			connections.Remove(otherID);
+		}
 
-	public override int GetHashCode() {
-		return 1213502048 + ID.GetHashCode();
+		public override bool Equals(object obj) {
+			return obj is Note note &&
+				   ID == note.ID;
+		}
+
+		public override int GetHashCode() {
+			return 1213502048 + ID.GetHashCode();
+		}
 	}
 }

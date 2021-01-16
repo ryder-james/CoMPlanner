@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CasePlanner.Data.Notes {
+namespace CasePlanner.Data.Views {
 	public class EdgeView : MonoBehaviour {
 		[SerializeField] private GameObject lineColliderBase = null;
 

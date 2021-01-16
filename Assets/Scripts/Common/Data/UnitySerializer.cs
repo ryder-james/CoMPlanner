@@ -1,7 +1,8 @@
 ﻿using System.IO;
+
 using UnityEngine;
 
-namespace CasePlanner.Data.Management {
+namespace JCommon.Data.Seralization {
 	public class UnitySerializer<T> : ISerializer<T> {
 		public void Serialize(T serializable, string path) {
 			string output = JsonUtility.ToJson(serializable);

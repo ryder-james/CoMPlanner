@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-using CasePlanner.Data.Notes;
 
-namespace CasePlanner.UI {
+using CasePlanner.Data.Views;
+
+namespace CasePlanner.Management {
 	public class PinConnector : MonoBehaviour {
 		[SerializeField] private GameObject edgeViewPrefab = null;
 		[SerializeField] private Transform stringParent = null;

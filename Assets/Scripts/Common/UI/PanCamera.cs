@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Common.UI {
+namespace JCommon.UI {
 	[System.Serializable, RequireComponent(typeof(Camera), typeof(Rigidbody2D), typeof(BoxCollider2D))]
 	public class PanCamera : MonoBehaviour {
 		[SerializeField]

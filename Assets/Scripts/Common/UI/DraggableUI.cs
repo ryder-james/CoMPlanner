@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Common.UI {
+namespace JCommon.UI {
     [RequireComponent(typeof(Rigidbody2D))]
     public class DraggableUI : EventTrigger {
         public bool IsHeld { get; set; } = false;

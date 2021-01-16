@@ -1,36 +1,38 @@
-﻿using CasePlanner.UI;
-using Common.UI;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Pin : MonoBehaviour {
-	private NoteView noteView;
-	private DraggableUI draggable;
+using JCommon.UI;
 
-	public PinConnector PinConnector { get; set; }
-	public NoteView NoteView {
-		get => noteView;
-		set { 
-			noteView = value;
-			draggable = noteView.GetComponent<DraggableUI>();
+using CasePlanner.Management;
+
+namespace CasePlanner.Data.Views {
+	public class Pin : MonoBehaviour {
+		private NoteView noteView;
+		private DraggableUI draggable;
+
+		public PinConnector PinConnector { get; set; }
+		public NoteView NoteView {
+			get => noteView;
+			set {
+				noteView = value;
+				draggable = noteView.GetComponent<DraggableUI>();
+			}
 		}
-	}
 
-	private void Awake() {
-		PinConnector = FindObjectOfType<PinConnector>();
-		NoteView = GetComponentInParent<NoteView>();
-	}
+		private void Awake() {
+			PinConnector = FindObjectOfType<PinConnector>();
+			NoteView = GetComponentInParent<NoteView>();
+		}
 
-	public void BeginConnection() {
-		PinConnector.A = this;
-		draggable.IsHeld = false;
-	}
+		public void BeginConnection() {
+			PinConnector.A = this;
+			draggable.IsHeld = false;
+		}
 
-	public void EndConnection() {
-		if (PinConnector.A != null) {
-			PinConnector.B = this;
-			PinConnector.Connect();
+		public void EndConnection() {
+			if (PinConnector.A != null) {
+				PinConnector.B = this;
+				PinConnector.Connect();
+			}
 		}
 	}
 }

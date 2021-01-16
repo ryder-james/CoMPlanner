@@ -1,28 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ClueCreator : MonoBehaviour {
-	[SerializeField] private Transform clueParent = null;
-	[SerializeField] private GameObject clueViewPrefab = null;
-	[SerializeField] private SceneDetailView detailView = null;
+using CasePlanner.Data.Views;
+using CasePlanner.Data.Components;
 
-	public void CreateClue_GUI() {
-		Clue c = new Clue();
-		CreateClue(ref c);
-	}
+namespace CasePlanner.Management {
+	public class ClueCreator : MonoBehaviour {
+		[SerializeField] private Transform clueParent = null;
+		[SerializeField] private GameObject clueViewPrefab = null;
+		[SerializeField] private SceneDetailView detailView = null;
 
-	public void ClearClues() {
-		for (int i = 0; i < clueParent.childCount; i++) {
-			Destroy(clueParent.GetChild(i).gameObject);
+		public void CreateClue_GUI() {
+			Clue c = new Clue();
+			CreateClue(ref c);
 		}
-	}
 
-	public void CreateClue(ref Clue clue) {
-		GameObject go = Instantiate(clueViewPrefab, clueParent);
-		ClueView cv = go.GetComponent<ClueView>();
+		public void ClearClues() {
+			for (int i = 0; i < clueParent.childCount; i++) {
+				Destroy(clueParent.GetChild(i).gameObject);
+			}
+		}
 
-		cv.DetailView = detailView;
-		cv.Clue = clue;
+		public void CreateClue(ref Clue clue) {
+			GameObject go = Instantiate(clueViewPrefab, clueParent);
+			ClueView cv = go.GetComponent<ClueView>();
+
+			cv.DetailView = detailView;
+			cv.Clue = clue;
+		}
 	}
 }
