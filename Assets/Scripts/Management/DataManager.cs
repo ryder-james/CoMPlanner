@@ -16,9 +16,11 @@ namespace CasePlanner.Management {
     public class DataManager : MonoBehaviour {
         [SerializeField] private NoteManager noteManager = null;
         [SerializeField] private PinConnector pinConnector = null;
+        [SerializeField] private GameObject settingsMenu = null;
         [SerializeField] private PanCamera panCam = null;
 
         private string activeSeriesName = null;
+        private bool settingsMenuIsOpen = false;
 
         private readonly UnitySerializer<Series.SerializedSeries> serializer
             = new UnitySerializer<Series.SerializedSeries>();
@@ -46,7 +48,23 @@ namespace CasePlanner.Management {
                     StartCoroutine(nameof(ShowLoadDialogAsync));
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                ToggleSettings();
+			}
         }
+
+        public void Quit() {
+            Application.Quit();
+		}
+
+        private void ToggleSettings() {
+            settingsMenuIsOpen = !settingsMenuIsOpen;
+
+            settingsMenu.SetActive(settingsMenuIsOpen);
+            panCam.CamEnabled = !settingsMenuIsOpen;
+
+		}
 
         private IEnumerator ShowSaveDialogAsync() {
             string prevPath = PlayerPrefs.GetString("PrevPath", null);
